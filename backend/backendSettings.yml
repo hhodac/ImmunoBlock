@@ -1,0 +1,8 @@
+dataSourceFactory:
+  driverClass: com.mysql.cj.jdbc.Driver
+  user: root # change it in your local
+  password: rootpasswordgiven # change it in your local
+  url: jdbc:mysql://localhost:3306/rubyxdb?serverTimezone=UTC
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
