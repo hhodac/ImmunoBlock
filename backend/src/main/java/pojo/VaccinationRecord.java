@@ -5,7 +5,7 @@ public class VaccinationRecord {
 
     private String fullName;
 
-    private String timestamp;
+    private long timestamp;
 
     private String vaccineType;
 
@@ -27,11 +27,11 @@ public class VaccinationRecord {
         this.fullName = fullName;
     }
 
-    public String getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
