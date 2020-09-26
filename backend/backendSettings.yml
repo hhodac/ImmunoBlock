@@ -1,8 +1,14 @@
-dataSourceFactory:
-  driverClass: com.mysql.cj.jdbc.Driver
-  user: root # change it in your local
-  password: rootpasswordgiven # change it in your local
-  url: jdbc:mysql://localhost:3306/rubyxdb?serverTimezone=UTC
-  properties:
-    charSet: UTF-8
-  maxWaitForConnection: 1s
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+chain:
+  ip: 45.113.233.149
+  port: 6738
+  username: multichainrpc
+  password: 6vSwnHN2Ndy8qFXVyHneNiZidyFRimzEVhacnqUhY2nZ
+  chainName: ImmunoBlock

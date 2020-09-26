@@ -1,14 +1,22 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+import config.ChainFactory;
 import io.dropwizard.Configuration;
-import io.dropwizard.db.DataSourceFactory;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 public class ImmunoBlockConfiguration extends Configuration {
-    private DataSourceFactory dataSourceFactory = new DataSourceFactory();
+    @Valid
+    @NotNull
+    private ChainFactory chainFactory = new ChainFactory();
 
-    public DataSourceFactory getDataSourceFactory() {
-        return dataSourceFactory;
+    @JsonProperty("chain")
+    public ChainFactory getChainFactory() {
+        return chainFactory;
     }
 
-    public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
-        this.dataSourceFactory = dataSourceFactory;
+    @JsonProperty("chain")
+    public void setChainFactory(ChainFactory chainFactory) {
+        this.chainFactory = chainFactory;
     }
 }
