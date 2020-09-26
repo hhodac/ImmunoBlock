@@ -22,8 +22,14 @@ public class VaccinationResource {
 
     @GET
     @Path("/{txid}")
-    public String getItem(@PathParam("txid") String txid) {
-        return vaccinationDao.getItem(txid);
+    public String retrieve(@PathParam("txid") String txid) {
+        return vaccinationDao.retrieve(txid);
+    }
+
+    @GET
+    @Path("/search")
+    public String searchByPassportNumber(@QueryParam("passportNumber") String passportNumber) {
+        return vaccinationDao.searchByPassportNumber(passportNumber);
     }
 
     @POST

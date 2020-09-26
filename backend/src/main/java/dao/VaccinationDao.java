@@ -30,7 +30,7 @@ public class VaccinationDao {
         return multichainService.apiCall(params, Method.LIST_STREAM_ITEMS, immunoBlockChain.getChainName());
     }
 
-    public String getItem(String txid) {
+    public String retrieve(String txid) {
         List<Object> params = new ArrayList<>();
         params.add(STREAM_NAME);
         params.add(txid);
@@ -40,14 +40,19 @@ public class VaccinationDao {
     public String addNewItem(VaccinationRecord vaccinationRecord) {
         List<Object> params = new ArrayList<>();
         params.add(STREAM_NAME);
-
         List<String> keys = new ArrayList<>();
         keys.add(vaccinationRecord.getPassportNumber());
         keys.add(vaccinationRecord.getClinicId());
         params.add(keys);
-
         String data = StringUtils.stringToHex(gson.toJson(vaccinationRecord));
         params.add(data);
         return multichainService.apiCall(params, Method.PUBLISH, immunoBlockChain.getChainName());
+    }
+
+    public String searchByPassportNumber(String passportNumber) {
+        List<Object> params = new ArrayList<>();
+        params.add(STREAM_NAME);
+        params.add(passportNumber);
+        return multichainService.apiCall(params, Method.LIST_STREAM_KEY_ITEMS, immunoBlockChain.getChainName());
     }
 }
