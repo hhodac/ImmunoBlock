@@ -1,11 +1,9 @@
 package resource;
 
 import dao.VaccinationDao;
+import pojo.VaccinationRecord;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/vaccination")
@@ -26,5 +24,11 @@ public class VaccinationResource {
     @Path("/{txid}")
     public String getItem(@PathParam("txid") String txid) {
         return vaccinationDao.getItem(txid);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String addNewItem(VaccinationRecord vaccinationRecord) {
+        return vaccinationDao.addNewItem(vaccinationRecord);
     }
 }

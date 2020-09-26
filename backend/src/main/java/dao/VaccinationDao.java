@@ -1,13 +1,16 @@
 package dao;
 
+import com.google.gson.Gson;
 import multichain.chain.Chain;
 import multichain.chain.Method;
 import multichain.chain.MultichainService;
+import pojo.VaccinationRecord;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VaccinationDao {
+    private final Gson gson = new Gson();
     private final static String STREAM_NAME = "vaccination_records";
     private final Chain immunoBlockChain;
     private final MultichainService multichainService;
@@ -31,5 +34,14 @@ public class VaccinationDao {
         params.add(STREAM_NAME);
         params.add(txid);
         return multichainService.apiCall(params, Method.GET_STREAM_ITEM, immunoBlockChain.getChainName());
+    }
+
+    public String addNewItem(VaccinationRecord vaccinationRecord) {
+        List<Object> params = new ArrayList<>();
+        params.add(STREAM_NAME);
+        params.add(gson.toJson(new String[]{vaccinationRecord.getPassportNumber(), vaccinationRecord.getClinicId()}));
+        params.add(gson.toJson(vaccinationRecord));
+        multichainService.apiCall(params, Method.PUBLISH, immunoBlockChain.getChainName());
+        return null;
     }
 }
