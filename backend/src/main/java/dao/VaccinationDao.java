@@ -7,7 +7,9 @@ import multichain.chain.MultichainService;
 import pojo.VaccinationRecord;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class VaccinationDao {
     private final Gson gson = new Gson();
@@ -39,9 +41,10 @@ public class VaccinationDao {
     public String addNewItem(VaccinationRecord vaccinationRecord) {
         List<Object> params = new ArrayList<>();
         params.add(STREAM_NAME);
-        params.add(gson.toJson(new String[]{vaccinationRecord.getPassportNumber(), vaccinationRecord.getClinicId()}));
-        params.add(gson.toJson(vaccinationRecord));
-        multichainService.apiCall(params, Method.PUBLISH, immunoBlockChain.getChainName());
-        return null;
+        params.add(new String[]{vaccinationRecord.getPassportNumber(), vaccinationRecord.getClinicId()});
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("json", vaccinationRecord);
+        params.add(gson.toJson(hashMap));
+        return multichainService.apiCall(params, Method.PUBLISH, immunoBlockChain.getChainName());
     }
 }
