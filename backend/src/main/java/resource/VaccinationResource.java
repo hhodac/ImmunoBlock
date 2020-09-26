@@ -1,25 +1,30 @@
 package resource;
 
-import multichain.VaccinationStream;
-import pojo.VaccinationRecord;
+import dao.VaccinationDao;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("/vaccination")
 @Produces(MediaType.APPLICATION_JSON)
 public class VaccinationResource {
-    VaccinationStream vaccinationStream;
+    private final VaccinationDao vaccinationDao;
 
-    public VaccinationResource(VaccinationStream vaccinationStream) {
-        this.vaccinationStream = vaccinationStream;
+    public VaccinationResource(VaccinationDao vaccinationDao) {
+        this.vaccinationDao = vaccinationDao;
     }
 
     @GET
-    public List<VaccinationRecord> list() {
-        return vaccinationStream.list();
+    public String list() {
+        return vaccinationDao.list();
+    }
+
+    @GET
+    @Path("/{txid}")
+    public String getItem(@PathParam("txid") String txid) {
+        return vaccinationDao.getItem(txid);
     }
 }
