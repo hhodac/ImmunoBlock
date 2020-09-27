@@ -106,10 +106,11 @@ curl $get_url
 The reponse is the following, which contains the record of the data in ASCI format,
 
 ```json
-                {
-                                "offchain":false,"data":"7b2270617373706f72744e756d626572223a22687a30313536373332222c2266756c6c4e616d65223a2261676d6f222c2274696d657374616d70223a313630313136383139313438332c2276616363696e6554797065223a223334333433222c22636c696e69634964223a2233343334323334227d",
-                "blocktime":1601168201,"keys":["hz0156732","3434234"],"available":true,"publishers":["1DVtTvHZJtet4gX3DSeBN3vp3MvgSj1NLbNgTf"],
-                "txid":"f99a19bc4b2f678c66a79df11290e0492524f5d1ba23b7429050c385cd8cbce0","confirmations":5}
+{
+"offchain":false,"data":"7b2270617373706f72744e756d626572223a22687a30313536373332222c2266756c6c4e616d65223a2261676d6f222c2274696d657374616d70223a313630313136383139313438332c2276616363696e6554797065223a223334333433222c22636c696e69634964223a2233343334323334227d",
+"blocktime":1601168201,"keys":["hz0156732","3434234"],"available":true,"publishers":["1DVtTvHZJtet4gX3DSeBN3vp3MvgSj1NLbNgTf"],
+"txid":"f99a19bc4b2f678c66a79df11290e0492524f5d1ba23b7429050c385cd8cbce0","confirmations":5
+}
 ```
 
 A web form for performing this GET request is at http://immunoblock.azurewebsites.net/lookup/, using the following HTML
@@ -144,6 +145,7 @@ function loadDoc(cFunction) {
   xhttp.send();
 }
 
+
 function hex2a(hexx) {
     var hex = hexx.toString();//force conversion
     var str = '';
@@ -164,6 +166,5 @@ function myFunction(xhttp) {
 
 </script>
 ```
-
 
 
