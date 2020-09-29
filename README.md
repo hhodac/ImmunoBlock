@@ -9,6 +9,11 @@ This README describes the steps to run the RPC server (which connects to the blo
 
 The prototype is hosted here http://immunoblock.azurewebsites.net/
 
+Watch the introduction video for more insights about our product:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/8D75pnfjzCY/hqdefault.jpg)](https://youtu.be/8D75pnfjzCY)
+
+
 # Requirements 
 
 - Java 11 (https://jdk.java.net/java-se-ri/11)
